@@ -7,13 +7,14 @@ function Main() {
 
   return (
     <>
-      
+      <div id="titleScreenText">
       <h1>Quizmo</h1>
       
-        <p>Learn your flashcards for free (leave quizlet he is not worth it)</p>
+        <p>Learn your flashcards for <strong>FREE</strong></p>
         
       
       <Link to="/signup"><button >Get Started</button></Link>
+      </div>
       
       
     </>

@@ -3,6 +3,10 @@
   margin: 0 auto;
   padding: 0rem;
   text-align: center;
+  
+}
+#titleScreenText {
+  margin: auto auto;
 }
 .bottomLeft {
   position: fixed;

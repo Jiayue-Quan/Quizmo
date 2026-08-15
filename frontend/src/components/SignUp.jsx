@@ -38,7 +38,7 @@ function SignUp() {
         <div >
             <Link to="/"><button className="topLeft">Back</button></Link>
             <h1>Signup</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} class="loginForm">
             <label htmlFor="email">
                 <strong>Email</strong>
             </label>

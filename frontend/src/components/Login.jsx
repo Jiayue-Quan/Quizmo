@@ -30,21 +30,21 @@ function Login() {
 
     }
     return (
-        <div>
+        <div >
             <Link to="/"><button className="topLeft">Back</button></Link>
             <h1>Login</h1>
-            <form onSubmit={handleSubmit}>
-            <label htmlFor="email">
-                <strong>Email</strong>
-            </label>
-            <input required id="email" name="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}/>
+            <form onSubmit={handleSubmit} class="loginForm">
+                <label htmlFor="email">
+                    <strong>Email</strong>
+                </label>
+                <input required id="email" name="email" placeholder="Enter Email" onChange={(e) => setEmail(e.target.value)}/>
 
-            <label htmlFor="password">
-                <strong>Password</strong>
-            </label>
-            <input required type={showPass ? "text" : "password"} id="password" name="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}/>
-            <br/>
-            <button type="submit" className="submitButton">Login</button>
+                <label htmlFor="password">
+                    <strong>Password</strong>
+                </label>
+                <input required type={showPass ? "text" : "password"} id="password" name="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}/>
+                <br/>
+                <button type="submit" className="submitButton">Login</button>
 
             </form>
 

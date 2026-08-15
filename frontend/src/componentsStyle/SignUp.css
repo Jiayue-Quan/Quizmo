@@ -35,3 +35,11 @@ h1 {
     color: rgb(148, 89, 0);
     
 }
+
+.loginForm {
+    
+    border: .2em solid #58845f;
+    border-radius: 15px;
+    background-color: #f9f1e1;
+    padding: 1em;
+}

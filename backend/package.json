@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "build:ui": "del dist /s /q && cd ../frontend && npm run build && xcopy \"C:\\Users\\jiayu\\OneDrive - Bellevue School District\\2023-2024\\Per. 7 CS\\quizmo\\frontend\\dist\" \"C:\\Users\\jiayu\\OneDrive - Bellevue School District\\2023-2024\\Per. 7 CS\\quizmo\\backend\\dist\" /s"
+    "build:ui": "del dist /s /q && cd ../frontend && npm run build && xcopy \".\\dist\" \"..\\backend\\dist\" /s"
     
   },
   "keywords": [],
