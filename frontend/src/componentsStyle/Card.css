@@ -5,7 +5,10 @@
     position: relative;
     width: 150vh;
     height: 75vh;
-    
+}
+.travelButtons button {
+    margin: .75em;
+    margin-top: 0;
 }
 .cardContainer {
     position: relative;

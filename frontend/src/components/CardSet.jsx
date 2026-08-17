@@ -20,6 +20,7 @@ function CardSet() {
     const [front, setFront] = useState('')
     const [back, setBack] = useState('')
     const [title, setTitle] = useState(null)
+    const [desc, setDesc] = useState(null)
     useEffect(() => {
         
         services.getSet(token, setId).then(res => {
@@ -30,6 +31,7 @@ function CardSet() {
             setFront(processedSet[0].front)
             setBack(processedSet[0].back)
             setTitle(res.data.title)
+            setDesc(res.data.description)
         })
         .catch(err => console.log(err))
         
@@ -101,6 +103,8 @@ if (title == null)
                 
                 
             }}>Next</button>
+        <h1>Description</h1>
+        <h2>{desc}</h2>
         </div>
         <button className="bottomLeft" onClick={logout}>Logout</button>
         </>

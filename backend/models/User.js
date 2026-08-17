@@ -8,7 +8,7 @@ const UserSchema = new mongoose.Schema({
     sets: [
         {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Set'}
+        ref: 'sets'}
     ]
 })
 UserSchema.plugin(uniqueValidator)

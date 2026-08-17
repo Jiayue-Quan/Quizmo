@@ -65,7 +65,7 @@ function Home() {
         <div className="stacks">
         {
             shown.map(set => {
-                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={false} handleDelete={handleDelete}/>
+                return <Cards key={set.id} set={set} isSearch={false} handleDelete={handleDelete}/>
             })
         }
         
@@ -80,7 +80,7 @@ function Home() {
         <div className="stacks">
         {
             filtered.map(set => {
-                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={true} handleDelete={handleDelete}/>
+                return <Cards key={set.id} set={set} isSearch={true} handleDelete={handleDelete}/>
             })
         }
         </div>

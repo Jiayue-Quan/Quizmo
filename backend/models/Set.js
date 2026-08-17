@@ -9,10 +9,10 @@ const SetSchema = new mongoose.Schema({
     }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     
     }
-})
+}) 
 SetSchema.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id.toString()

@@ -86,7 +86,7 @@ app.get('/searchSets/:word', (req, res) => {
             {"title": {$regex: `${req.params.word}`, $options: 'i'}},
             {"description": {$regex: `${req.params.word}`, $options: 'i'}}
         ]
-        }).then(sets => {
+        }).populate("user", "username").then(sets => {
         
         res.json(sets)
     })

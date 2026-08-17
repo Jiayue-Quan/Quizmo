@@ -2,21 +2,19 @@ import '../componentsStyle/Cards.css'
 import { Link } from "react-router-dom"
 import services from '../services'
 
-const Cards = ({name, setId, isSearch, handleDelete}) => {
-    const link = `/cardset/${setId}`
+const Cards = ({set, isSearch, handleDelete}) => {
+    const link = `/cardset/${set.id}`
+    console.log(set)
 
-    // const handleDelete = () => {
-    //     services.deleteSet(token, setId).then(res => console.log(res)).catch(err => {console.log(err)})
-    // }
     return (
         
         <Link to={link}><div className="stackOuter">
-            <h2>{name}</h2>
-            <h3>Created By:</h3>
+            <h2>{set.title}</h2>
+            <h3 class={isSearch ? '' : 'invisible'}>Created By: {set.user.username}</h3>
             <button class={isSearch ? 'invisible' : ''} onClick={(event) => {
                 event.preventDefault();
                 event.stopPropagation();
-                handleDelete(setId)}}>Delete</button>
+                handleDelete(set.id)}}>Delete</button>
             
         </div></Link>
     )
