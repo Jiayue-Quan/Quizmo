@@ -1,7 +1,7 @@
 import axios from 'axios'
 const baseUrl = ''
 
-
+//gets all sets for current user
 const getSets = (token) => {
     return axios.get(`${baseUrl}/sets`, {
             headers: {
@@ -30,6 +30,9 @@ const createSet = (token, title, description, cards, username) => {
     return axios.post(`${baseUrl}/sets`, {title, description, cards, username}, 
     {headers: {Authorization: `Bearer ${token}`}})
 }
+const deleteSet = (token, setId) => {
+    return axios.delete(`${baseUrl}/sets/${setId}`, {headers: {Authorization: `Bearer ${token}`}})
+}
 
 
-export default { getSets, getSet, login, createSet, signup, searchSet }
+export default { getSets, getSet, login, createSet, signup, searchSet, deleteSet }

@@ -11,9 +11,14 @@
     padding: 1vh;
     color: rgb(14, 72, 14);
     border: 1px solid transparent;
-    
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .stackOuter:hover {
-    
     border: 1px solid green;
+}
+.invisible {
+    visibility: hidden;
 }

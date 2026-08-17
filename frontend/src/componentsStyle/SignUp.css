@@ -7,9 +7,9 @@
 }
 
 .loginForm {
-    border: .2em solid #58845f;
+    border: .2em solid #1F5F32;
     border-radius: 15px;
-    background-color: #e6f0d3;
+    background-color: #E8E8D8;
     padding: 1em;
     box-shadow: 0px 2px 5px #58845f;
 }
@@ -25,18 +25,20 @@ input {
     padding: 1.8vh 1vw;
 
     background-color: #F2F1EB;
+    
 
     border-radius: 30px;
     border: 2px solid rgb(7, 60, 7);
     box-shadow: inset 1px 1px 1px #58845f;
-    
-   
-
 }
 
 ::placeholder {
-    color: rgb(8, 42, 8);
+    color: #718070;
     opacity: 0.5;
+}
+
+label {
+    margin-bottom: .2em;
 }
 h1 {
     margin-top: 0px;

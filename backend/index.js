@@ -113,7 +113,7 @@ app.get('/searchSets/:word', (req, res) => {
         })
         .catch(err => console.log(err))  
 })
-//get all user's sets
+//get current user's sets
 app.get('/sets', userExtractor, (req, res) => {
     
     UserModel.findOne({username: req.user.username}).then(user => {
@@ -121,21 +121,31 @@ app.get('/sets', userExtractor, (req, res) => {
         SetModel.find({user: user.id}).then(sets => {
             
             res.json(sets)
-        })
-        .catch(err => console.log(err))
-    })
+        }).catch(err => console.log(err))
+    }).catch(err => console.log(err))
     
 })
 //get specific set
-app.get('/sets/:setId', userExtractor, (req, res) => {
-    UserModel.findOne({username: req.user.username}).then(user => {
+app.get('/sets/:setId', (req, res) => {
+    
+    SetModel.findById(req.params.setId).then(set => {
         
-        SetModel.findById(req.params.setId).then(set => {
-            
-            res.json(set)
-        })
-        .catch(err => console.log(err))
+        res.json(set)
     })
+    .catch(err => console.log(err))
+    
+})
+//delete set
+app.delete("/sets/:setId", userExtractor, (req, res) => {
+    SetModel.findOneAndDelete({
+        _id: req.params.setId,
+        user: req.user.id
+    }).then(set => {
+        res.json(set)
+    }).catch(err => {
+        console.log(err)
+    })
+   
 })
 
 

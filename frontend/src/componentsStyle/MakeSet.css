@@ -46,3 +46,6 @@ input {
 .title{
     margin-top: 1vh;
 }
+.invisible {
+    visibility: hidden;
+}

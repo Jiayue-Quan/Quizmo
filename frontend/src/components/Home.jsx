@@ -22,10 +22,6 @@ function Home() {
         services.getSets(token).then(res => setShown(res.data))
         .catch(err => console.log(err))
         
-        
-        
-        
-        
     }, [])
     
     //logout, go to login page
@@ -51,15 +47,9 @@ function Home() {
         <div className="top">
             
             <h1 className="title">Home</h1>
-            
-            
         </div>
         
         <h2 id="currentUser">{username}</h2>
-        
-        
-        
-        
         
         <Link to="/makeset"><button>New Set</button></Link>
         
@@ -67,7 +57,7 @@ function Home() {
         <div className="stacks">
         {
             shown.map(set => {
-                return <Cards key={set.id} name={set.title} setId={set.id}/>
+                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={false}/>
             })
         }
         
@@ -82,7 +72,7 @@ function Home() {
         <div className="stacks">
         {
             filtered.map(set => {
-                return <Cards key={set.id} name={set.title} setId={set.id}/>
+                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={true}/>
             })
         }
         </div>

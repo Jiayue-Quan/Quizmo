@@ -21,6 +21,9 @@ const MakeSet = () => {
     const username = JSON.parse(window.localStorage.getItem('loggedUser')).data.username
     const token = JSON.parse(window.localStorage.getItem('loggedUser')).data.token
 
+    //alerts for set requirements
+    const [needTerms, setNeedTerms] = useState(false)
+
     const navigate = useNavigate()
 
     const logout = () => {
@@ -64,16 +67,27 @@ const MakeSet = () => {
     }
     //process title, description, and all cards upon submission
     const handleSubmit = () => {
-        const cards = cardList.map((card) => {return {front: card.term, back: card.def}})
+        if (cardList.length > 0) {
+            const cards = cardList.map((card) => {return {front: card.term, back: card.def}})
         
 
-        services.createSet(token, title, description, cards, username)
-        .then(res => {console.log(res)})
-        .catch(err => {console.log(err)})
-        console.log("submit")
-        setTitle("")
-        setDescription("")
-        setCardList([])
+            services.createSet(token, title, description, cards, username)
+            .then(res => {
+                console.log(res)
+                navigate('/Home')
+            })
+            .catch(err => {console.log(err)})
+            setTitle("")
+            setDescription("")
+            setCardList([])
+            setNeedTerms(false)
+        }
+        else {
+            setNeedTerms(true)
+
+        }
+        
+        
         
     }
     //remove card/card info from states
@@ -95,6 +109,7 @@ const MakeSet = () => {
         <Link to="/home"><button className="topLeft">Home</button></Link>
         <h2 id="currentUser">{username}</h2>
         <h1 className="title">Create new set</h1>
+        
         <form className="createSet" onSubmit={(event) =>{event.preventDefault(); handleSubmit()}}>
         
             <div>
@@ -107,6 +122,7 @@ const MakeSet = () => {
             </div>
 
             <button id="createNew">Create set</button>
+            <h3 className={needTerms ? '' : 'invisible'}>Add some terms first!</h3>
                      
         </form>
         <NewCard handleAdd={handleAdd} divCount={divCount} setDivCount={setDivCount}/>

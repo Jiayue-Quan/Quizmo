@@ -6,7 +6,13 @@
   
 }
 #titleScreenText {
-  margin: auto auto;
+  margin: auto auto;  
+}
+#titleScreenText h1 {
+  font-size: 5em;
+}
+#titleScreenText p {
+  font-size: 1.5em;
 }
 .bottomLeft {
   position: fixed;
