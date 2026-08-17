@@ -35,9 +35,9 @@ function SignUp() {
     }
 
     return (
-        <div >
+        <div className="loginBody">
             <Link to="/"><button className="topLeft">Back</button></Link>
-            <h1>Signup</h1>
+            <h1>Sign up</h1>
             <form onSubmit={handleSubmit} class="loginForm">
             <label htmlFor="email">
                 <strong>Email</strong>

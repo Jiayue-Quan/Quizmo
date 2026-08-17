@@ -1,8 +1,11 @@
 :root {
+  --background-color: #F2F1EB;
+  --button-color: #58845f;
+  
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  background-color: #F2F1EB;
+  background-color: var(--background-color);
   color: #58845f;
 
 
@@ -24,13 +27,13 @@ h1 {
 button {
   border-radius: 8px;
   color: #F2F1EB;
-  background-color: #58845f;
+  background-color: var(--button-color);
   font-size: 1em;
   font-weight: 600;
   padding: 0.6em 1.2em;
-  border-color: #FFFFFF;
+  border-color: transparent;
   
 }
 button:hover {
-  border-color: #58845f;
+  border-color: var(--button-color);
 }

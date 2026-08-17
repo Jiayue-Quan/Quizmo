@@ -30,7 +30,7 @@ function Login() {
 
     }
     return (
-        <div >
+        <div className="loginBody">
             <Link to="/"><button className="topLeft">Back</button></Link>
             <h1>Login</h1>
             <form onSubmit={handleSubmit} class="loginForm">

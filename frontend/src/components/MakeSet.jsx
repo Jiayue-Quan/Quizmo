@@ -96,7 +96,7 @@ const MakeSet = () => {
         <h2 id="currentUser">{username}</h2>
         <h1 className="title">Create new set</h1>
         <form className="createSet" onSubmit={(event) =>{event.preventDefault(); handleSubmit()}}>
-        <button id="createNew">Create set</button>
+        
             <div>
             <label htmlFor="setTitle">Set title:</label>
             <input value={title} onChange={(e) => setTitle(e.target.value)} id="setTitle" name="setTitle" placeholder="Enter Title" required/>
@@ -105,6 +105,8 @@ const MakeSet = () => {
                 <label htmlFor="desc">Description:</label>
                 <input value={description} onChange={(e) => setDescription(e.target.value)} id="desc" name="desc" placeholder="Enter Description" required/>
             </div>
+
+            <button id="createNew">Create set</button>
                      
         </form>
         <NewCard handleAdd={handleAdd} divCount={divCount} setDivCount={setDivCount}/>
