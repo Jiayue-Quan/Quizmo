@@ -39,6 +39,14 @@ function Home() {
     {
         return null;
     }
+
+    const handleDelete = (setId) => {
+        services.deleteSet(token, setId).then(res => {
+            console.log(res)
+            setShown(prevShown => prevShown.filter(set => set.id != setId))
+            setFiltered(prevFiltered => prevFiltered.filter(set => set.id != setId))
+        }).catch(err => {console.log(err)})
+    }
     return (
         <>
         
@@ -57,7 +65,7 @@ function Home() {
         <div className="stacks">
         {
             shown.map(set => {
-                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={false}/>
+                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={false} handleDelete={handleDelete}/>
             })
         }
         
@@ -72,7 +80,7 @@ function Home() {
         <div className="stacks">
         {
             filtered.map(set => {
-                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={true}/>
+                return <Cards key={set.id} name={set.title} setId={set.id} isSearch={true} handleDelete={handleDelete}/>
             })
         }
         </div>

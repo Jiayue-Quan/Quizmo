@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken')
 const userExtractor = require('./middleware').userExtractor
 const tokenExtractor = require('./middleware').tokenExtractor
 
+const path = require('path')
 const app = express()
 app.use(express.json())
 app.use(cors())
@@ -52,7 +53,6 @@ app.post('/login', (req, res) => {
                     //create/send token and user in response
                     const userForToken = {
                         email: email,
-                        password: password,
                         username: user.username
                     }
 
@@ -148,7 +148,9 @@ app.delete("/sets/:setId", userExtractor, (req, res) => {
    
 })
 
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
 const PORT = process.env.PORT || 3001
 app.listen(PORT, () => {
