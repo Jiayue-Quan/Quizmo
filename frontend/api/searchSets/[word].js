@@ -1,4 +1,5 @@
 const SetModel = require('../../models/Set.js')
+const UserModel = require("../../models/User.js")
 const dbConnect = require("../../lib/db.js")
 
 module.exports = async (req, res) => {
@@ -7,6 +8,11 @@ module.exports = async (req, res) => {
     }
     await dbConnect()
     const {word} = req.query
+    if (!word || typeof word !== "string") {
+            return res.status(400).json({
+                error: "Search word invalid."
+            });
+    }
 
     try {
         const sets = await SetModel.find({
@@ -16,7 +22,7 @@ module.exports = async (req, res) => {
                 "title": {
                 $regex: `${word}`, 
                 $options: 'i'
-            }
+                }
             },
 
             {
