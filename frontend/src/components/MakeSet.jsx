@@ -71,7 +71,7 @@ const MakeSet = () => {
             const cards = cardList.map((card) => {return {front: card.term, back: card.def}})
         
 
-            services.createSet(token, title, description, cards, username)
+            services.createSet(token, title, description, cards)
             .then(res => {
                 console.log(res)
                 navigate('/Home')

@@ -2,12 +2,12 @@ require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const UserModel = require('./models/User')
-const SetModel = require('./models/Set')
+const UserModel = require('../frontend/models/User')
+const SetModel = require('../frontend/models/Set')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const userExtractor = require('./middleware').userExtractor
-const tokenExtractor = require('./middleware').tokenExtractor
+const userExtractor = require('../frontend/middleware').userExtractor
+const tokenExtractor = require('../frontend/middleware').tokenExtractor
 
 const path = require('path')
 const app = express()
@@ -93,25 +93,25 @@ app.get('/searchSets/:word', (req, res) => {
     .catch(err => console.log(err))
 })
 //add new set
-    app.post('/sets', userExtractor, (req, res) => {
-    const {title, description, cards, username} = req.body
+app.post('/sets', userExtractor, (req, res) => {    
+const {title, description, cards, username} = req.body
+
+    //create new set in database
+    SetModel.create({
+        title: title,
+        description: description,
+        cards: cards,
+        //add creator's id to set properties
+        user: req.user.id
+
+    })
+    .then(set => {
+        //add set to the creator's list of sets
+        UserModel.updateOne({username: req.user.username}, {$push: {sets: set.id}}).then(user => {return}).catch(err => console.log(err))
+        res.json(set)
     
-        //create new set in database
-        SetModel.create({
-            title: title,
-            description: description,
-            cards: cards,
-            //add creator's id to set properties
-            user: req.user.id
-    
-        })
-        .then(set => {
-            //add set to the creator's list of sets
-            UserModel.updateOne({username: req.user.username}, {$push: {sets: set.id}}).then(user => {return}).catch(err => console.log(err))
-            res.json(set)
-        
-        })
-        .catch(err => console.log(err))  
+    })
+    .catch(err => console.log(err))  
 })
 //get current user's sets
 app.get('/sets', userExtractor, (req, res) => {

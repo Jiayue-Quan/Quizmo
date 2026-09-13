@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = ''
+const baseUrl = '../api'
 
 //gets all sets for current user
 const getSets = (token) => {
@@ -26,8 +26,8 @@ const login = (email, password) => {
 const signup = (email, password, user) => {
     return axios.post(`${baseUrl}/signup`, {email, password, user})
 }
-const createSet = (token, title, description, cards, username) => {
-    return axios.post(`${baseUrl}/sets`, {title, description, cards, username}, 
+const createSet = (token, title, description, cards) => {
+    return axios.post(`${baseUrl}/sets`, {title, description, cards}, 
     {headers: {Authorization: `Bearer ${token}`}})
 }
 const deleteSet = (token, setId) => {
